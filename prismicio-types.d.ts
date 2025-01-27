@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = AboutSlice | HeroSlice;
+type HomepageDocumentDataSlicesSlice = CoursesSlice | AboutSlice | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -298,6 +298,108 @@ type AboutSliceVariation = AboutSliceDefault;
 export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
 /**
+ * Item in *Courses → Default → Primary → Course Cards*
+ */
+export interface CoursesSliceDefaultPrimaryCourseCardsItem {
+  /**
+   * Image field in *Courses → Default → Primary → Course Cards*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: courses.default.primary.course_cards[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *Courses → Default → Primary → Course Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: courses.default.primary.course_cards[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *Courses → Default → Primary → Course Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: courses.default.primary.course_cards[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Link field in *Courses → Default → Primary → Course Cards*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: courses.default.primary.course_cards[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *Courses → Default → Primary*
+ */
+export interface CoursesSliceDefaultPrimary {
+  /**
+   * Heading field in *Courses → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: courses.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Course Cards field in *Courses → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: courses.default.primary.course_cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  course_cards: prismic.GroupField<
+    Simplify<CoursesSliceDefaultPrimaryCourseCardsItem>
+  >;
+}
+
+/**
+ * Default variation for Courses Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CoursesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CoursesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Courses*
+ */
+type CoursesSliceVariation = CoursesSliceDefault;
+
+/**
+ * Courses Shared Slice
+ *
+ * - **API ID**: `courses`
+ * - **Description**: Courses
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CoursesSlice = prismic.SharedSlice<
+  "courses",
+  CoursesSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -422,6 +524,11 @@ declare module "@prismicio/client" {
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
+      CoursesSlice,
+      CoursesSliceDefaultPrimaryCourseCardsItem,
+      CoursesSliceDefaultPrimary,
+      CoursesSliceVariation,
+      CoursesSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
