@@ -1,0 +1,96 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Piece"
+						}
+					}
+				]
+			},
+			"activities_card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+										"width": 5243,
+										"height": 3495
+									},
+									"url": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+									"width": 5243,
+									"height": 3495,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading3",
+											"content": {
+												"text": "Period"
+											}
+										}
+									]
+								}
+							],
+							[
+								"body",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Do consectetur elit ipsum mollit sunt. Lorem laborum tempor velit ullamco ea consectetur ex id deserunt non. Nisi dolore consequat minim elit officia culpa adipisicing Lorem laborum adipisicing anim ut fugiat."
+											}
+										}
+									]
+								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "90620d92-e2ca-468d-a5e5-c3743d545cda",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev",
+										"text": "whom"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

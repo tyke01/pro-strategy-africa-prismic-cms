@@ -203,6 +203,7 @@ export type EventsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EventsDocumentData>, "events", Lang>;
 
 type HomepageDocumentDataSlicesSlice =
+  | ActivitiesSlice
   | EventsSlice
   | BlogsSlice
   | CoursesSlice
@@ -503,6 +504,108 @@ type AboutSliceVariation = AboutSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
+
+/**
+ * Item in *Activities → Default → Primary → Activities Card*
+ */
+export interface ActivitiesSliceDefaultPrimaryActivitiesCardItem {
+  /**
+   * Image field in *Activities → Default → Primary → Activities Card*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities.default.primary.activities_card[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *Activities → Default → Primary → Activities Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities.default.primary.activities_card[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Body field in *Activities → Default → Primary → Activities Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities.default.primary.activities_card[].body
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body: prismic.RichTextField;
+
+  /**
+   * Link field in *Activities → Default → Primary → Activities Card*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities.default.primary.activities_card[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *Activities → Default → Primary*
+ */
+export interface ActivitiesSliceDefaultPrimary {
+  /**
+   * Heading field in *Activities → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Activities Card field in *Activities → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities.default.primary.activities_card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  activities_card: prismic.GroupField<
+    Simplify<ActivitiesSliceDefaultPrimaryActivitiesCardItem>
+  >;
+}
+
+/**
+ * Default variation for Activities Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActivitiesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ActivitiesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Activities*
+ */
+type ActivitiesSliceVariation = ActivitiesSliceDefault;
+
+/**
+ * Activities Shared Slice
+ *
+ * - **API ID**: `activities`
+ * - **Description**: Activities
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActivitiesSlice = prismic.SharedSlice<
+  "activities",
+  ActivitiesSliceVariation
+>;
 
 /**
  * Item in *Blogs → Default → Primary → Blog Cards*
@@ -924,6 +1027,11 @@ declare module "@prismicio/client" {
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
+      ActivitiesSlice,
+      ActivitiesSliceDefaultPrimaryActivitiesCardItem,
+      ActivitiesSliceDefaultPrimary,
+      ActivitiesSliceVariation,
+      ActivitiesSliceDefault,
       BlogsSlice,
       BlogsSliceDefaultPrimaryBlogCardsItem,
       BlogsSliceDefaultPrimary,

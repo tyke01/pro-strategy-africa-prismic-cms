@@ -11,6 +11,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "activities": {
+              "type": "SharedSlice"
+            },
             "events": {
               "type": "SharedSlice"
             },
