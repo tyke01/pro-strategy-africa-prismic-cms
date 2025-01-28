@@ -9,5 +9,6 @@ export const components = {
   courses: dynamic(() => import("./Courses")),
   events: dynamic(() => import("./Events")),
   hero: dynamic(() => import("./Hero")),
+  partners_and_clients: dynamic(() => import("./PartnersAndClients")),
   team: dynamic(() => import("./Team")),
 };

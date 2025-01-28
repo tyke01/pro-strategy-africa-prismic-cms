@@ -203,6 +203,7 @@ export type EventsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EventsDocumentData>, "events", Lang>;
 
 type HomepageDocumentDataSlicesSlice =
+  | PartnersAndClientsSlice
   | TeamSlice
   | ActivitiesSlice
   | EventsSlice
@@ -991,6 +992,78 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *PartnersAndClients → Default → Primary → Carousel*
+ */
+export interface PartnersAndClientsSliceDefaultPrimaryCarouselItem {
+  /**
+   * Partner field in *PartnersAndClients → Default → Primary → Carousel*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_and_clients.default.primary.carousel[].partner
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  partner: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *PartnersAndClients → Default → Primary*
+ */
+export interface PartnersAndClientsSliceDefaultPrimary {
+  /**
+   * Heading field in *PartnersAndClients → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_and_clients.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Carousel field in *PartnersAndClients → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: partners_and_clients.default.primary.carousel[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  carousel: prismic.GroupField<
+    Simplify<PartnersAndClientsSliceDefaultPrimaryCarouselItem>
+  >;
+}
+
+/**
+ * Default variation for PartnersAndClients Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersAndClientsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PartnersAndClientsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PartnersAndClients*
+ */
+type PartnersAndClientsSliceVariation = PartnersAndClientsSliceDefault;
+
+/**
+ * PartnersAndClients Shared Slice
+ *
+ * - **API ID**: `partners_and_clients`
+ * - **Description**: PartnersAndClients
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersAndClientsSlice = prismic.SharedSlice<
+  "partners_and_clients",
+  PartnersAndClientsSliceVariation
+>;
+
+/**
  * Item in *Team → Default → Primary → Team Cards*
  */
 export interface TeamSliceDefaultPrimaryTeamCardsItem {
@@ -1141,6 +1214,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      PartnersAndClientsSlice,
+      PartnersAndClientsSliceDefaultPrimaryCarouselItem,
+      PartnersAndClientsSliceDefaultPrimary,
+      PartnersAndClientsSliceVariation,
+      PartnersAndClientsSliceDefault,
       TeamSlice,
       TeamSliceDefaultPrimaryTeamCardsItem,
       TeamSliceDefaultPrimary,
