@@ -1,33 +1,20 @@
 {
   "format": "page",
-  "id": "homepage",
-  "label": "Homepage",
-  "repeatable": false,
-  "status": true,
+  "id": "events",
   "json": {
     "Main": {
-      "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
+      "uid": {
+        "type": "UID",
         "config": {
-          "choices": {
-            "events": {
-              "type": "SharedSlice"
-            },
-            "blogs": {
-              "type": "SharedSlice"
-            },
-            "courses": {
-              "type": "SharedSlice"
-            },
-            "about": {
-              "type": "SharedSlice"
-            },
-            "hero": {
-              "type": "SharedSlice"
-            }
-          }
+          "label": "UID"
         }
+      },
+      "slices": {
+        "config": {
+          "choices": {}
+        },
+        "fieldset": "Slice Zone",
+        "type": "Slices"
       }
     },
     "SEO & Metadata": {
@@ -57,5 +44,8 @@
         "type": "Image"
       }
     }
-  }
+  },
+  "label": "events",
+  "repeatable": true,
+  "status": true
 }

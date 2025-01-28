@@ -4,7 +4,206 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+/**
+ * Content for Event Card documents
+ */
+interface EventCardDocumentData {
+  /**
+   * Event Badge field in *Event Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_badge
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_badge: prismic.RichTextField;
+
+  /**
+   * Event Duration field in *Event Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_duration
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_duration: prismic.RichTextField;
+
+  /**
+   * Event Title field in *Event Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_title: prismic.RichTextField;
+
+  /**
+   * Event Body field in *Event Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_body
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_body: prismic.RichTextField;
+
+  /**
+   * Event Dates field in *Event Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_dates
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_dates: prismic.RichTextField;
+
+  /**
+   * Event Location field in *Event Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_location
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_location: prismic.RichTextField;
+
+  /**
+   * Event Fees Title field in *Event Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_fees_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_fees_title: prismic.RichTextField;
+
+  /**
+   * Event Fees Attendance field in *Event Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_fees_attendance
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_fees_attendance: prismic.RichTextField;
+
+  /**
+   * Event Fees Workbook field in *Event Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_fees_workbook
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  event_fees_workbook: prismic.RichTextField;
+
+  /**
+   * Event Signup Link field in *Event Card*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: event_card.event_signup_link
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  event_signup_link: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Event Card document from Prismic
+ *
+ * - **API ID**: `event_card`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type EventCardDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<EventCardDocumentData>,
+    "event_card",
+    Lang
+  >;
+
+type EventsDocumentDataSlicesSlice = never;
+
+/**
+ * Content for events documents
+ */
+interface EventsDocumentData {
+  /**
+   * Slice Zone field in *events*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<EventsDocumentDataSlicesSlice> /**
+   * Meta Title field in *events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: events.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *events*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: events.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *events*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * events document from Prismic
+ *
+ * - **API ID**: `events`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type EventsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<EventsDocumentData>, "events", Lang>;
+
 type HomepageDocumentDataSlicesSlice =
+  | EventsSlice
   | BlogsSlice
   | CoursesSlice
   | AboutSlice
@@ -197,7 +396,11 @@ export type SettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-export type AllDocumentTypes = HomepageDocument | SettingsDocument;
+export type AllDocumentTypes =
+  | EventCardDocument
+  | EventsDocument
+  | HomepageDocument
+  | SettingsDocument;
 
 /**
  * Primary content in *About → Default → Primary*
@@ -503,6 +706,95 @@ export type CoursesSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Events → Default → Primary → Event Cards*
+ */
+export interface EventsSliceDefaultPrimaryEventCardsItem {
+  /**
+   * Event Cards field in *Events → Default → Primary → Event Cards*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.default.primary.event_cards[].event_cards
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  event_cards: prismic.ContentRelationshipField<"event_card">;
+}
+
+/**
+ * Primary content in *Events → Default → Primary*
+ */
+export interface EventsSliceDefaultPrimary {
+  /**
+   * Heading field in *Events → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * Description field in *Events → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Link field in *Events → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+  /**
+   * Event Cards field in *Events → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events.default.primary.event_cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  event_cards: prismic.GroupField<
+    Simplify<EventsSliceDefaultPrimaryEventCardsItem>
+  >;
+}
+
+/**
+ * Default variation for Events Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<EventsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Events*
+ */
+type EventsSliceVariation = EventsSliceDefault;
+
+/**
+ * Events Shared Slice
+ *
+ * - **API ID**: `events`
+ * - **Description**: Events
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventsSlice = prismic.SharedSlice<"events", EventsSliceVariation>;
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -615,6 +907,11 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      EventCardDocument,
+      EventCardDocumentData,
+      EventsDocument,
+      EventsDocumentData,
+      EventsDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
@@ -637,6 +934,11 @@ declare module "@prismicio/client" {
       CoursesSliceDefaultPrimary,
       CoursesSliceVariation,
       CoursesSliceDefault,
+      EventsSlice,
+      EventsSliceDefaultPrimaryEventCardsItem,
+      EventsSliceDefaultPrimary,
+      EventsSliceVariation,
+      EventsSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,

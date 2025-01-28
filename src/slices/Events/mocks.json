@@ -1,0 +1,61 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"heading": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Building"
+						}
+					}
+				]
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sint adipisicing culpa ad culpa tempor eiusmod incididunt dolor ullamco incididunt id laborum non. Sint velit proident reprehenderit dolor tempor nulla dolor do duis magna. Labore proident nulla mollit minim anim sint voluptate adipisicing ipsum."
+						}
+					}
+				]
+			},
+			"link": {
+				"key": "b4793aca-ead5-4870-8eba-30757eb09130",
+				"__TYPE__": "LinkContent",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "http://google.com",
+					"text": "gun"
+				}
+			},
+			"event_cards": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"event_cards",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "f5d82993-baa4-47c0-bbb5-22c9689939db",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

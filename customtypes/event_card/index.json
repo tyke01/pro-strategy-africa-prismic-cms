@@ -1,0 +1,109 @@
+{
+  "format": "custom",
+  "id": "event_card",
+  "label": "Event Card",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "event_badge": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Badge",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "event_duration": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Duration",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "event_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "heading3"
+        }
+      },
+      "event_body": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Body",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "event_dates": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Dates",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "event_location": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Location",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "event_fees_title": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Fees Title",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,strong,em"
+        }
+      },
+      "event_fees_attendance": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Fees Attendance",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "event_fees_workbook": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Event Fees Workbook",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "event_signup_link": {
+        "type": "Link",
+        "config": {
+          "label": "Event Signup Link",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": true,
+          "allowText": true,
+          "repeat": false
+        }
+      }
+    }
+  }
+}
