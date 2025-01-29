@@ -1,6 +1,9 @@
 {
   "format": "page",
   "id": "activities",
+  "label": "Activities",
+  "repeatable": true,
+  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -10,11 +13,18 @@
         }
       },
       "slices": {
-        "config": {
-          "choices": {}
-        },
+        "type": "Slices",
         "fieldset": "Slice Zone",
-        "type": "Slices"
+        "config": {
+          "choices": {
+            "activities_banner": {
+              "type": "SharedSlice"
+            },
+            "activity_container": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     },
     "SEO & Metadata": {
@@ -44,8 +54,5 @@
         "type": "Image"
       }
     }
-  },
-  "label": "Activities",
-  "repeatable": true,
-  "status": true
+  }
 }

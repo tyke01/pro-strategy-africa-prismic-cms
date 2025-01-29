@@ -4,7 +4,9 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type ActivitiesDocumentDataSlicesSlice = never;
+type ActivitiesDocumentDataSlicesSlice =
+  | ActivitiesBannerSlice
+  | ActivityContainerSlice;
 
 /**
  * Content for Activities documents
@@ -741,6 +743,242 @@ type ActivitiesSliceVariation = ActivitiesSliceDefault;
 export type ActivitiesSlice = prismic.SharedSlice<
   "activities",
   ActivitiesSliceVariation
+>;
+
+/**
+ * Primary content in *ActivitiesBanner → Default → Primary*
+ */
+export interface ActivitiesBannerSliceDefaultPrimary {
+  /**
+   * Image field in *ActivitiesBanner → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities_banner.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *ActivitiesBanner → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities_banner.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ActivitiesBanner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActivitiesBannerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ActivitiesBannerSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ActivitiesBanner → Training → Primary*
+ */
+export interface ActivitiesBannerSliceTrainingPrimary {
+  /**
+   * Image field in *ActivitiesBanner → Training → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities_banner.training.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *ActivitiesBanner → Training → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities_banner.training.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Training variation for ActivitiesBanner Slice
+ *
+ * - **API ID**: `training`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActivitiesBannerSliceTraining = prismic.SharedSliceVariation<
+  "training",
+  Simplify<ActivitiesBannerSliceTrainingPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ActivitiesBanner → Online → Primary*
+ */
+export interface ActivitiesBannerSliceOnlinePrimary {
+  /**
+   * Image field in *ActivitiesBanner → Online → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities_banner.online.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *ActivitiesBanner → Online → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities_banner.online.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Online variation for ActivitiesBanner Slice
+ *
+ * - **API ID**: `online`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActivitiesBannerSliceOnline = prismic.SharedSliceVariation<
+  "online",
+  Simplify<ActivitiesBannerSliceOnlinePrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ActivitiesBanner*
+ */
+type ActivitiesBannerSliceVariation =
+  | ActivitiesBannerSliceDefault
+  | ActivitiesBannerSliceTraining
+  | ActivitiesBannerSliceOnline;
+
+/**
+ * ActivitiesBanner Shared Slice
+ *
+ * - **API ID**: `activities_banner`
+ * - **Description**: ActivitiesBanner
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActivitiesBannerSlice = prismic.SharedSlice<
+  "activities_banner",
+  ActivitiesBannerSliceVariation
+>;
+
+/**
+ * Item in *ActivityContainer → Default → Primary → Gallery*
+ */
+export interface ActivityContainerSliceDefaultPrimaryGalleryItem {
+  /**
+   * Gallery Image field in *ActivityContainer → Default → Primary → Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activity_container.default.primary.gallery[].gallery_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  gallery_image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *ActivityContainer → Default → Primary*
+ */
+export interface ActivityContainerSliceDefaultPrimary {
+  /**
+   * Title field in *ActivityContainer → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activity_container.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Trainer field in *ActivityContainer → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activity_container.default.primary.trainer
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  trainer: prismic.RichTextField;
+
+  /**
+   * Description field in *ActivityContainer → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activity_container.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Image field in *ActivityContainer → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activity_container.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Gallery field in *ActivityContainer → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activity_container.default.primary.gallery[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  gallery: prismic.GroupField<
+    Simplify<ActivityContainerSliceDefaultPrimaryGalleryItem>
+  >;
+}
+
+/**
+ * Default variation for ActivityContainer Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActivityContainerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ActivityContainerSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ActivityContainer*
+ */
+type ActivityContainerSliceVariation = ActivityContainerSliceDefault;
+
+/**
+ * ActivityContainer Shared Slice
+ *
+ * - **API ID**: `activity_container`
+ * - **Description**: ActivityContainer
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ActivityContainerSlice = prismic.SharedSlice<
+  "activity_container",
+  ActivityContainerSliceVariation
 >;
 
 /**
@@ -1800,6 +2038,19 @@ declare module "@prismicio/client" {
       ActivitiesSliceDefaultPrimary,
       ActivitiesSliceVariation,
       ActivitiesSliceDefault,
+      ActivitiesBannerSlice,
+      ActivitiesBannerSliceDefaultPrimary,
+      ActivitiesBannerSliceTrainingPrimary,
+      ActivitiesBannerSliceOnlinePrimary,
+      ActivitiesBannerSliceVariation,
+      ActivitiesBannerSliceDefault,
+      ActivitiesBannerSliceTraining,
+      ActivitiesBannerSliceOnline,
+      ActivityContainerSlice,
+      ActivityContainerSliceDefaultPrimaryGalleryItem,
+      ActivityContainerSliceDefaultPrimary,
+      ActivityContainerSliceVariation,
+      ActivityContainerSliceDefault,
       BlogsSlice,
       BlogsSliceDefaultPrimaryBlogCardsItem,
       BlogsSliceDefaultPrimary,
