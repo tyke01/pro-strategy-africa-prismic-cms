@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "course_cards": {
+              "type": "SharedSlice"
+            },
             "header": {
               "type": "SharedSlice"
             }

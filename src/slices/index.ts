@@ -7,6 +7,7 @@ export const components = {
   activities: dynamic(() => import("./Activities")),
   blogs: dynamic(() => import("./Blogs")),
   contact: dynamic(() => import("./Contact")),
+  course_cards: dynamic(() => import("./CourseCards")),
   courses: dynamic(() => import("./Courses")),
   events: dynamic(() => import("./Events")),
   header: dynamic(() => import("./Header")),

@@ -69,7 +69,7 @@ export type ActivitiesDocument<Lang extends string = string> =
     Lang
   >;
 
-type CoursesDocumentDataSlicesSlice = HeaderSlice;
+type CoursesDocumentDataSlicesSlice = CourseCardsSlice | HeaderSlice;
 
 /**
  * Content for Courses documents
@@ -888,6 +888,98 @@ export type ContactSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *CourseCards → Default → Primary → Course Cards*
+ */
+export interface CourseCardsSliceDefaultPrimaryCourseCardsItem {
+  /**
+   * Title field in *CourseCards → Default → Primary → Course Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_cards.default.primary.course_cards[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Code field in *CourseCards → Default → Primary → Course Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_cards.default.primary.course_cards[].code
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  code: prismic.RichTextField;
+
+  /**
+   * Description field in *CourseCards → Default → Primary → Course Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_cards.default.primary.course_cards[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Duration field in *CourseCards → Default → Primary → Course Cards*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_cards.default.primary.course_cards[].duration
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  duration: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *CourseCards → Default → Primary*
+ */
+export interface CourseCardsSliceDefaultPrimary {
+  /**
+   * Course Cards field in *CourseCards → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: course_cards.default.primary.course_cards[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  course_cards: prismic.GroupField<
+    Simplify<CourseCardsSliceDefaultPrimaryCourseCardsItem>
+  >;
+}
+
+/**
+ * Default variation for CourseCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CourseCardsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CourseCardsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CourseCards*
+ */
+type CourseCardsSliceVariation = CourseCardsSliceDefault;
+
+/**
+ * CourseCards Shared Slice
+ *
+ * - **API ID**: `course_cards`
+ * - **Description**: CourseCards
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CourseCardsSlice = prismic.SharedSlice<
+  "course_cards",
+  CourseCardsSliceVariation
+>;
+
+/**
  * Item in *Courses → Default → Primary → Course Cards*
  */
 export interface CoursesSliceDefaultPrimaryCourseCardsItem {
@@ -1543,6 +1635,11 @@ declare module "@prismicio/client" {
       ContactSliceDefaultPrimary,
       ContactSliceVariation,
       ContactSliceDefault,
+      CourseCardsSlice,
+      CourseCardsSliceDefaultPrimaryCourseCardsItem,
+      CourseCardsSliceDefaultPrimary,
+      CourseCardsSliceVariation,
+      CourseCardsSliceDefault,
       CoursesSlice,
       CoursesSliceDefaultPrimaryCourseCardsItem,
       CoursesSliceDefaultPrimary,
