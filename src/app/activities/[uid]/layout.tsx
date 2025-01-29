@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 import "../../globals.css";
-import CoursesNavbar from "@/components/courses-navbar";
+import ActivitiesNavbar from "@/components/activities-navbar";
 
 
 
@@ -20,7 +20,7 @@ export default function CourseLayout({
   return (
     <html lang="en">
       <body>
-        <CoursesNavbar />
+        <ActivitiesNavbar />
         <main >
           {children}
         </main>

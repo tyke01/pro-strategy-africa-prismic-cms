@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 
 import "../globals.css";
+import EventsNavbar from "@/components/events-navbar";
 
-import CoursesNavbar from "@/components/courses-navbar";
 
 export const metadata: Metadata = {
   title: "Pro Strategy Africa - Events",
@@ -19,7 +19,7 @@ export default function CourseLayout({
   return (
     <html lang="en">
       <body>
-        <CoursesNavbar />
+        <EventsNavbar />
         <main >
           {children}
         </main>
