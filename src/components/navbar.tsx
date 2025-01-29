@@ -104,8 +104,8 @@ const Navbar = ({ settings }: NavbarProps) => {
                     pathname.startsWith(`${item.link.text}/`);
                   return (
                     <SheetClose asChild key={item.link.text}>
-                      <Link
-                        href={item.link.link_type}
+                      <PrismicNextLink
+                        field={item.link}
                         className={cn(
                           "text-xl text-start pl-6 pr-32 font-medium py-4 w-full relative transition-all duration-300 ",
                           {
@@ -123,7 +123,7 @@ const Navbar = ({ settings }: NavbarProps) => {
                           )}
                         ></span>
                         {item.link.text}
-                      </Link>
+                      </PrismicNextLink>
                     </SheetClose>
                   );
                 })}
