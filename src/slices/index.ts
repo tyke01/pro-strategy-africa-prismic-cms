@@ -9,6 +9,7 @@ export const components = {
   contact: dynamic(() => import("./Contact")),
   course_cards: dynamic(() => import("./CourseCards")),
   courses: dynamic(() => import("./Courses")),
+  cta: dynamic(() => import("./Cta")),
   events: dynamic(() => import("./Events")),
   header: dynamic(() => import("./Header")),
   hero: dynamic(() => import("./Hero")),

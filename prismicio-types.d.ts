@@ -69,7 +69,7 @@ export type ActivitiesDocument<Lang extends string = string> =
     Lang
   >;
 
-type CoursesDocumentDataSlicesSlice = CourseCardsSlice | HeaderSlice;
+type CoursesDocumentDataSlicesSlice = CtaSlice | CourseCardsSlice | HeaderSlice;
 
 /**
  * Content for Courses documents
@@ -1082,6 +1082,58 @@ export type CoursesSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Cta → Default → Primary*
+ */
+export interface CtaSliceDefaultPrimary {
+  /**
+   * Title field in *Cta → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Link field in *Cta → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: cta.default.primary.link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+}
+
+/**
+ * Default variation for Cta Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CtaSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CtaSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Cta*
+ */
+type CtaSliceVariation = CtaSliceDefault;
+
+/**
+ * Cta Shared Slice
+ *
+ * - **API ID**: `cta`
+ * - **Description**: Cta
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CtaSlice = prismic.SharedSlice<"cta", CtaSliceVariation>;
+
+/**
  * Item in *Events → Default → Primary → Event Cards*
  */
 export interface EventsSliceDefaultPrimaryEventCardsItem {
@@ -1645,6 +1697,10 @@ declare module "@prismicio/client" {
       CoursesSliceDefaultPrimary,
       CoursesSliceVariation,
       CoursesSliceDefault,
+      CtaSlice,
+      CtaSliceDefaultPrimary,
+      CtaSliceVariation,
+      CtaSliceDefault,
       EventsSlice,
       EventsSliceDefaultPrimaryEventCardsItem,
       EventsSliceDefaultPrimary,
