@@ -4,6 +4,136 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type ActivitiesDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Activities documents
+ */
+interface ActivitiesDocumentData {
+  /**
+   * Slice Zone field in *Activities*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ActivitiesDocumentDataSlicesSlice> /**
+   * Meta Title field in *Activities*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: activities.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Activities*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: activities.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Activities*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: activities.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Activities document from Prismic
+ *
+ * - **API ID**: `activities`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ActivitiesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ActivitiesDocumentData>,
+    "activities",
+    Lang
+  >;
+
+type CoursesDocumentDataSlicesSlice = HeaderSlice;
+
+/**
+ * Content for Courses documents
+ */
+interface CoursesDocumentData {
+  /**
+   * Slice Zone field in *Courses*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: courses.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CoursesDocumentDataSlicesSlice> /**
+   * Meta Title field in *Courses*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: courses.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Courses*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: courses.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Courses*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: courses.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Courses document from Prismic
+ *
+ * - **API ID**: `courses`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CoursesDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CoursesDocumentData>,
+    "courses",
+    Lang
+  >;
+
 /**
  * Content for Event Card documents
  */
@@ -203,6 +333,7 @@ export type EventsDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<EventsDocumentData>, "events", Lang>;
 
 type HomepageDocumentDataSlicesSlice =
+  | ContactSlice
   | TestimonialsSlice
   | PartnersAndClientsSlice
   | TeamSlice
@@ -401,6 +532,8 @@ export type SettingsDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | ActivitiesDocument
+  | CoursesDocument
   | EventCardDocument
   | EventsDocument
   | HomepageDocument
@@ -710,6 +843,51 @@ type BlogsSliceVariation = BlogsSliceDefault;
 export type BlogsSlice = prismic.SharedSlice<"blogs", BlogsSliceVariation>;
 
 /**
+ * Primary content in *Contact → Default → Primary*
+ */
+export interface ContactSliceDefaultPrimary {
+  /**
+   * Heading field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Contact*
+ */
+type ContactSliceVariation = ContactSliceDefault;
+
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: Contact
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSlice = prismic.SharedSlice<
+  "contact",
+  ContactSliceVariation
+>;
+
+/**
  * Item in *Courses → Default → Primary → Course Cards*
  */
 export interface CoursesSliceDefaultPrimaryCourseCardsItem {
@@ -899,6 +1077,58 @@ type EventsSliceVariation = EventsSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type EventsSlice = prismic.SharedSlice<"events", EventsSliceVariation>;
+
+/**
+ * Primary content in *Header → Default → Primary*
+ */
+export interface HeaderSliceDefaultPrimary {
+  /**
+   * Image field in *Header → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Heading field in *Header → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: header.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Header Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeaderSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeaderSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Header*
+ */
+type HeaderSliceVariation = HeaderSliceDefault;
+
+/**
+ * Header Shared Slice
+ *
+ * - **API ID**: `header`
+ * - **Description**: Header
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeaderSlice = prismic.SharedSlice<"header", HeaderSliceVariation>;
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -1276,6 +1506,12 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ActivitiesDocument,
+      ActivitiesDocumentData,
+      ActivitiesDocumentDataSlicesSlice,
+      CoursesDocument,
+      CoursesDocumentData,
+      CoursesDocumentDataSlicesSlice,
       EventCardDocument,
       EventCardDocumentData,
       EventsDocument,
@@ -1303,6 +1539,10 @@ declare module "@prismicio/client" {
       BlogsSliceDefaultPrimary,
       BlogsSliceVariation,
       BlogsSliceDefault,
+      ContactSlice,
+      ContactSliceDefaultPrimary,
+      ContactSliceVariation,
+      ContactSliceDefault,
       CoursesSlice,
       CoursesSliceDefaultPrimaryCourseCardsItem,
       CoursesSliceDefaultPrimary,
@@ -1313,6 +1553,10 @@ declare module "@prismicio/client" {
       EventsSliceDefaultPrimary,
       EventsSliceVariation,
       EventsSliceDefault,
+      HeaderSlice,
+      HeaderSliceDefaultPrimary,
+      HeaderSliceVariation,
+      HeaderSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
