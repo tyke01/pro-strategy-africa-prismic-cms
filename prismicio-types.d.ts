@@ -271,7 +271,7 @@ export type EventCardDocument<Lang extends string = string> =
     Lang
   >;
 
-type EventsDocumentDataSlicesSlice = never;
+type EventsDocumentDataSlicesSlice = EventsBannerSlice;
 
 /**
  * Content for events documents
@@ -1223,6 +1223,128 @@ type EventsSliceVariation = EventsSliceDefault;
 export type EventsSlice = prismic.SharedSlice<"events", EventsSliceVariation>;
 
 /**
+ * Item in *EventsBanner → Default → Primary → Card*
+ */
+export interface EventsBannerSliceDefaultPrimaryCardItem {
+  /**
+   * Counter field in *EventsBanner → Default → Primary → Card*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events_banner.default.primary.card[].counter
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  counter: prismic.KeyTextField;
+
+  /**
+   * Title field in *EventsBanner → Default → Primary → Card*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events_banner.default.primary.card[].title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+}
+
+/**
+ * Item in *EventsBanner → Default → Primary → Tag*
+ */
+export interface EventsBannerSliceDefaultPrimaryTagItem {
+  /**
+   * Tag Text field in *EventsBanner → Default → Primary → Tag*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events_banner.default.primary.tag[].tag_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag_text: prismic.KeyTextField;
+}
+
+/**
+ * Item in *EventsBanner → Default → Primary → Event Card*
+ */
+export interface EventsBannerSliceDefaultPrimaryEventCardItem {
+  /**
+   * Event field in *EventsBanner → Default → Primary → Event Card*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events_banner.default.primary.event_card[].event
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  event: prismic.ContentRelationshipField<"event_card">;
+}
+
+/**
+ * Primary content in *EventsBanner → Default → Primary*
+ */
+export interface EventsBannerSliceDefaultPrimary {
+  /**
+   * Card field in *EventsBanner → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events_banner.default.primary.card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card: prismic.GroupField<Simplify<EventsBannerSliceDefaultPrimaryCardItem>>;
+
+  /**
+   * Tag field in *EventsBanner → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events_banner.default.primary.tag[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  tag: prismic.GroupField<Simplify<EventsBannerSliceDefaultPrimaryTagItem>>;
+
+  /**
+   * Event Card field in *EventsBanner → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: events_banner.default.primary.event_card[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  event_card: prismic.GroupField<
+    Simplify<EventsBannerSliceDefaultPrimaryEventCardItem>
+  >;
+}
+
+/**
+ * Default variation for EventsBanner Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventsBannerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<EventsBannerSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *EventsBanner*
+ */
+type EventsBannerSliceVariation = EventsBannerSliceDefault;
+
+/**
+ * EventsBanner Shared Slice
+ *
+ * - **API ID**: `events_banner`
+ * - **Description**: EventsBanner
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EventsBannerSlice = prismic.SharedSlice<
+  "events_banner",
+  EventsBannerSliceVariation
+>;
+
+/**
  * Primary content in *Header → Default → Primary*
  */
 export interface HeaderSliceDefaultPrimary {
@@ -1706,6 +1828,13 @@ declare module "@prismicio/client" {
       EventsSliceDefaultPrimary,
       EventsSliceVariation,
       EventsSliceDefault,
+      EventsBannerSlice,
+      EventsBannerSliceDefaultPrimaryCardItem,
+      EventsBannerSliceDefaultPrimaryTagItem,
+      EventsBannerSliceDefaultPrimaryEventCardItem,
+      EventsBannerSliceDefaultPrimary,
+      EventsBannerSliceVariation,
+      EventsBannerSliceDefault,
       HeaderSlice,
       HeaderSliceDefaultPrimary,
       HeaderSliceVariation,

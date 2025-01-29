@@ -1,6 +1,9 @@
 {
   "format": "page",
   "id": "events",
+  "label": "events",
+  "repeatable": true,
+  "status": true,
   "json": {
     "Main": {
       "uid": {
@@ -10,11 +13,15 @@
         }
       },
       "slices": {
-        "config": {
-          "choices": {}
-        },
+        "type": "Slices",
         "fieldset": "Slice Zone",
-        "type": "Slices"
+        "config": {
+          "choices": {
+            "events_banner": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     },
     "SEO & Metadata": {
@@ -44,8 +51,5 @@
         "type": "Image"
       }
     }
-  },
-  "label": "events",
-  "repeatable": true,
-  "status": true
+  }
 }

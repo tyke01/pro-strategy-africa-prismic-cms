@@ -11,6 +11,7 @@ export const components = {
   courses: dynamic(() => import("./Courses")),
   cta: dynamic(() => import("./Cta")),
   events: dynamic(() => import("./Events")),
+  events_banner: dynamic(() => import("./EventsBanner")),
   header: dynamic(() => import("./Header")),
   hero: dynamic(() => import("./Hero")),
   partners_and_clients: dynamic(() => import("./PartnersAndClients")),

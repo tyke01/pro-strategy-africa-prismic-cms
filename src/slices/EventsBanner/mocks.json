@@ -1,0 +1,80 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"counter",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "mind",
+									"type": "Text"
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Mollit ut fugiat laborum incididunt duis consequat ad ipsum anim culpa est."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"tag": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"tag_text",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "ground",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"event_card": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"event",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "95b32bef-0636-43e0-a782-929458aa182e",
+									"value": {
+										"__TYPE__": "DocumentLink",
+										"id": "mock_document_id"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

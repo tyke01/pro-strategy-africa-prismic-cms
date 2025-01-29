@@ -1,0 +1,80 @@
+{
+  "id": "events_banner",
+  "type": "SharedSlice",
+  "name": "EventsBanner",
+  "description": "EventsBanner",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "card": {
+          "type": "Group",
+          "config": {
+            "label": "Card",
+            "repeat": true,
+            "fields": {
+              "counter": {
+                "type": "Text",
+                "config": {
+                  "label": "Counter",
+                  "placeholder": ""
+                }
+              },
+              "title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Title",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em"
+                }
+              }
+            }
+          }
+        },
+        "tag": {
+          "type": "Group",
+          "config": {
+            "label": "Tag",
+            "repeat": true,
+            "fields": {
+              "tag_text": {
+                "type": "Text",
+                "config": {
+                  "label": "Tag Text",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "event_card": {
+          "type": "Group",
+          "config": {
+            "label": "Event Card",
+            "repeat": true,
+            "fields": {
+              "event": {
+                "type": "Link",
+                "config": {
+                  "label": "Event",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "event_card"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
